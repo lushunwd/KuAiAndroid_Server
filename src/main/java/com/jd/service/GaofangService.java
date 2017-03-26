@@ -1,6 +1,7 @@
 package com.jd.service;
 
-import com.jd.dao.SmallDao;
+import com.jd.dao.GaofangDao;
+import com.jd.dao.SourceDao;
 import com.jd.util.DateJsonValueProcessor;
 import net.sf.json.JSONArray;
 import net.sf.json.JsonConfig;
@@ -17,17 +18,18 @@ import java.util.Map;
 
 
 @Service
-public class SmallService {
+public class GaofangService {
     @Resource
-    SmallDao smallDao;
+    GaofangDao gaofangDao;
 
-    public String getSmallInfo(int start) {
+    public String getGaofangInfo(int start) {
         int pageSize=10;
         int offset=(start-1)*pageSize;
-        List<Map<String, Object>> smallList = smallDao.getSmallList(offset,pageSize);
+        List<Map<String, Object>> gaofangList = gaofangDao.getGaofangList(offset,pageSize);
         JsonConfig config=new JsonConfig();
         config.registerJsonValueProcessor(Timestamp.class, new DateJsonValueProcessor("yyyy-MM-dd HH:mm:ss"));
-        JSONArray smallInfo =JSONArray.fromObject(smallList,config);
-        return smallInfo.toString();
+        JSONArray gaofangInfo =JSONArray.fromObject(gaofangList,config);
+
+        return gaofangInfo.toString();
     }
 }

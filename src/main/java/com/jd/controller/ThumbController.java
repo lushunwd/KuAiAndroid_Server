@@ -1,6 +1,6 @@
 package com.jd.controller;
 
-import com.jd.service.LoginService;
+import com.jd.service.ThumbUpService;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,21 +11,23 @@ import javax.annotation.Resource;
 import java.util.Map;
 
 /**
- * Created by lushun on 2017/3/22.
+ * Created by lushun on 2017/3/24.
  */
 
+
 @Controller
-public class LoginController {
+public class ThumbController {
 
     @Resource
-    LoginService loginService;
+    ThumbUpService thumbUpService;
 
-    @RequestMapping(value = "/login",produces = "application/json;charset=utf-8")
+
+    @RequestMapping(value = "/thumb",produces = "application/json;charset=utf-8")
     @ResponseBody
-    private String login(@RequestParam("value") String json){
-        JSONObject jsonObject = JSONObject.fromObject(json);
+    private String ThumbUpOrDown(@RequestParam("value") String value){
+        JSONObject jsonObject = JSONObject.fromObject(value);
         Map<String, Object> map = (Map)jsonObject;
-        String userInfo=loginService.getUserInfo(map);
-        return userInfo;
+         String thumbiInfo =thumbUpService.getThumbInfo(map);
+        return thumbiInfo;
     }
 }

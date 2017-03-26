@@ -1,5 +1,6 @@
 package com.jd.service;
 
+import com.jd.dao.LoveDao;
 import com.jd.dao.SmallDao;
 import com.jd.util.DateJsonValueProcessor;
 import net.sf.json.JSONArray;
@@ -17,17 +18,17 @@ import java.util.Map;
 
 
 @Service
-public class SmallService {
+public class LoveService {
     @Resource
-    SmallDao smallDao;
+    LoveDao loveDao;
 
-    public String getSmallInfo(int start) {
+    public String getLoveInfo(int start) {
         int pageSize=10;
         int offset=(start-1)*pageSize;
-        List<Map<String, Object>> smallList = smallDao.getSmallList(offset,pageSize);
+        List<Map<String, Object>> loveList = loveDao.getLoveList(offset,pageSize);
         JsonConfig config=new JsonConfig();
         config.registerJsonValueProcessor(Timestamp.class, new DateJsonValueProcessor("yyyy-MM-dd HH:mm:ss"));
-        JSONArray smallInfo =JSONArray.fromObject(smallList,config);
-        return smallInfo.toString();
+        JSONArray loveInfo =JSONArray.fromObject(loveList,config);
+        return loveInfo.toString();
     }
 }

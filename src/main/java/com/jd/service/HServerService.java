@@ -1,6 +1,6 @@
 package com.jd.service;
 
-import com.jd.dao.SmallDao;
+import com.jd.dao.HServerDao;
 import com.jd.util.DateJsonValueProcessor;
 import net.sf.json.JSONArray;
 import net.sf.json.JsonConfig;
@@ -17,17 +17,17 @@ import java.util.Map;
 
 
 @Service
-public class SmallService {
+public class HServerService {
     @Resource
-    SmallDao smallDao;
+    HServerDao HServerDao;
 
-    public String getSmallInfo(int start) {
+    public String getHServerInfo(int start) {
         int pageSize=10;
         int offset=(start-1)*pageSize;
-        List<Map<String, Object>> smallList = smallDao.getSmallList(offset,pageSize);
+        List<Map<String, Object>> hserverList = HServerDao.getHServerList(offset,pageSize);
         JsonConfig config=new JsonConfig();
         config.registerJsonValueProcessor(Timestamp.class, new DateJsonValueProcessor("yyyy-MM-dd HH:mm:ss"));
-        JSONArray smallInfo =JSONArray.fromObject(smallList,config);
-        return smallInfo.toString();
+        JSONArray hserverInfo =JSONArray.fromObject(hserverList,config);
+        return hserverInfo.toString();
     }
 }

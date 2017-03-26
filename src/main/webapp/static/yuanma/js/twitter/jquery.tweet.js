@@ -240,7 +240,7 @@
 			o.tweet_text = $([linkURLs(o.tweet_raw_text, o.entities)]).linkUser().linkHash()[0];
 			o.tweet_text_fancy = $([o.tweet_text]).makeHeart()[0];
 
-			// Default spans, and pre-formatted blocks for common layouts
+			// Default spans, and pre-formatted blocks for util layouts
 			o.user = t('<a class="tweet_user" href="{user_url}">{screen_name}</a>', o);
 			o.join = s.join_text ? t(' <span class="tweet_join">{join_text}</span> ', o) : ' ';
 			o.avatar = o.avatar_size ?
