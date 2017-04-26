@@ -1,7 +1,6 @@
 package com.jd.service;
 
-import com.jd.dao.LoveDao;
-import com.jd.dao.MenuDao;
+import com.jd.dao.CodeDao;
 import com.jd.util.DateJsonValueProcessor;
 import net.sf.json.JSONArray;
 import net.sf.json.JsonConfig;
@@ -18,17 +17,18 @@ import java.util.Map;
 
 
 @Service
-public class MenuService {
+public class CodeService {
     @Resource
-    MenuDao menuDao;
+    CodeDao codeDao;
 
-    public String getMenuInfo(int start) {
-        int pageSize=10;
-        int offset=(start-1)*pageSize;
-        List<Map<String, Object>> menuList = menuDao.getMenuList(offset,pageSize);
-        JsonConfig config=new JsonConfig();
+
+    public String getCodeInfo(int start, String type) {
+        int pageSize = 10;
+        int offset = (start - 1) * pageSize;
+        List<Map<String, Object>> codeList = codeDao.getCodeList(offset, pageSize, type);
+        JsonConfig config = new JsonConfig();
         config.registerJsonValueProcessor(Timestamp.class, new DateJsonValueProcessor("yyyy-MM-dd HH:mm:ss"));
-        JSONArray menuInfo =JSONArray.fromObject(menuList,config);
-        return menuInfo.toString();
+        JSONArray codeListInfo = JSONArray.fromObject(codeList, config);
+        return codeListInfo.toString();
     }
 }

@@ -10,7 +10,7 @@ import java.util.Map;
  */
 
 @Repository
-public interface RecommendDao {
-    List<Map<String,Object>> getRecommendList(int offset, int pageSize);
+public interface CodeDao {
+    List<Map<String,Object>> getCodeList(int offset, int pageSize,String type);
     int getCount();
 }

@@ -1,7 +1,6 @@
 package com.jd.controller;
 
-import com.jd.service.HServerService;
-import com.jd.service.SourceService;
+import com.jd.service.SourceGroupService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,15 +13,16 @@ import javax.annotation.Resource;
  */
 
 @Controller
-public class HServerController {
+public class SourceGroupController {
 
     @Resource
-    HServerService hServerService;
+    SourceGroupService sourceGroupService;
 
-    @RequestMapping(value = "/hserver",produces = "application/json;charset=utf-8")
+
+    @RequestMapping(value = "/source",produces = "application/json;charset=utf-8")
     @ResponseBody
-    private String hserver(@RequestParam("mstart") int start){
-        String sourceInfo=hServerService.getHServerInfo(start);
-        return sourceInfo;
+    private String sourceGroup(@RequestParam("mstart") int start){
+        String sourceGroupInfo=sourceGroupService.getSourceGroupInfo(start);
+        return sourceGroupInfo;
     }
 }

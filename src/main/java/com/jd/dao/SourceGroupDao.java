@@ -10,7 +10,7 @@ import java.util.Map;
  */
 
 @Repository
-public interface MenuDao {
-    List<Map<String,Object>> getMenuList(int offset, int pageSize);
+public interface SourceGroupDao {
+    List<Map<String,Object>> getSourceGroupList(int offset, int pageSize);
     int getCount();
 }
