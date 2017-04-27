@@ -3,16 +3,14 @@
 <mapper namespace="com.jd.dao.ShareDao">
     <select id="getShareList" resultType="java.util.HashMap" parameterType="map">
       SELECT
-        QVALUE.*,QUSER.USERID,QUSER.UNAME,QUSER.UHEAD,QTYPE.*
+        avalue.*,auser.userid,auser.uname,auser.uhead
       FROM
-       QVALUE ,QUSER,QTYPE
-      WHERE
-        QVALUE.UID=QUSER.USERID
-        AND QVALUE.TID = QTYPE.TID
-        AND QTYPE.TID = 1
-        AND QVALUE.ISCHECKDE = 1
+       avalue ,auser
+      where
+        avalue.uid=auser.userid
+        AND avalue.ischecked = 1
         order by
-        QVALUE.QID
+        avalue.aid
         desc limit #{0},5;
     </select>
 </mapper>

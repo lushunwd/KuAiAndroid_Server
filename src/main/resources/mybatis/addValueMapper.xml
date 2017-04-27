@@ -3,8 +3,8 @@
 <mapper namespace="com.jd.dao.AddValueDao">
     <insert id="addValue" parameterType="map" >
        INSERT INTO
-       qvalue(UID,TID,QIMG,AIMG,QVALUE,QLIKE,QUNLIKE,QSHARE)
+       avalue(uid,aimg,avalue,alike,aunlike)
        VALUES
-       ('${uid}','${tid}','${qimg}','${aimg}','${qvalue}','${qlike}','${qunlike}',"1");
+       ('${uid}','${aimg}','${qvalue}','${qlike}','${qunlike}');
     </insert>
 </mapper>
