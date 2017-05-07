@@ -20,7 +20,6 @@ public class RegisterService {
     RegisterDao registerDao;
 
     public String register (Map<String,Object> user){
-
         Date now = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
         user.put("utime",dateFormat.format( now ));

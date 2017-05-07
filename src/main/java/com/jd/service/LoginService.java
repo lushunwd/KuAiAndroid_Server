@@ -20,7 +20,6 @@ import java.util.Map;
 public class LoginService {
     @Resource
     LoginDao loginDao;
-
     public String getUserInfo(Map<String, Object> user) {
         List<Map<String, Object>>userInfoListByName = loginDao.getUserInfoByName(user);
         List<Map<String, Object>>userInfoList = loginDao.getUserInfo(user);
@@ -34,6 +33,5 @@ public class LoginService {
             JSONArray userInfo = JSONArray.fromObject(userInfoList,config);
             return userInfo.toString();
         }
-
     }
 }

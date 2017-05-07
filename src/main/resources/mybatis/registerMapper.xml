@@ -4,7 +4,6 @@
     <insert id="addUser"   parameterType="map">
         INSERT INTO auser( uname, upass, utime) VALUES ('${uname}','${upassword}','${utime}');
     </insert>
-
     <select id="getUserInfoByName" resultType="java.util.HashMap"  parameterType="map">
         SELECT * FROM auser WHERE uname='${uname}';
     </select>
